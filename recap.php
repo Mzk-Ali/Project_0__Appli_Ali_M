@@ -8,22 +8,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Récapitulatif des produits</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
+    <header>
+        <nav class="navbar" style="background-color: #e3f2fd;">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="recap.php">Index</a>
+            </div>
+        </nav>
+    </header>
+
     <?php var_dump($_SESSION); ?>
     <?php 
         if(!isset($_SESSION['products']) || empty($_SESSION['products'])){ //Verification si produit existe ou si il est vide
             echo "<p>Aucun produit en session...</p>";
         }
         else{
-            echo "<table>",
+            echo "<table class='table table-striped'>",
                     "<thead>",
                         "<tr>",
-                            "<th>#</th>",
-                            "<th>Nom</th>",
-                            "<th>Prix</th>",
-                            "<th>Quantité</th>",
-                            "<th>Total</th>",
+                            "<th scope='col'>#</th>",
+                            "<th scope='col'>Nom</th>",
+                            "<th scope='col'>Prix</th>",
+                            "<th scope='col'>Quantité</th>",
+                            "<th scope='col'>Total</th>",
                         "</tr>",
                     "</thead>",
                     "<tbody>";
