@@ -12,3 +12,41 @@
 main{
     margin: 200px 200px;
 }
+
+
+
+
+
+
+
+
+
+td.survol{
+    position:relative;
+
+}
+
+td:hover.survol {
+    /* text-decoration: none; */
+    background: none;
+}
+
+td.survol div {
+    display: none;
+    background-color: rgba(204, 229, 255, 0.8);
+}
+  
+td:hover.survol div {
+    display: block;
+    position: absolute; 
+    top: 40px;
+    left: 10px;
+    z-index: 20;
+    width:100%;
+    height: 100%;
+    padding:2px 4px;
+}
+
+img{
+    max-width: 100%;
+}

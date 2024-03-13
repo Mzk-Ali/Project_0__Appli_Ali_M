@@ -23,14 +23,8 @@
                 </div>
                 <div class="nav-link">
                     <?php
-                        if(!isset($_SESSION['products']) || empty($_SESSION['products']))
-                        {
-                            echo "0";
-                        }
-                        else
-                        {
-                            echo count($_SESSION['products']);
-                        }
+                        require("function.php");
+                        affiche_nbr_product();
                     ?>
                 </div>
             </nav>

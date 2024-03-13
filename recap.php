@@ -3,7 +3,6 @@
     ob_start();
     $page_title = "Récapitulatif";
 
-
     if(!isset($_SESSION['products']) || empty($_SESSION['products'])) 
     { //Verification si produit existe ou si il est vide
         echo "<p>Aucun produit en session...</p>";
@@ -25,9 +24,14 @@
         $totalGeneral = 0;
         foreach($_SESSION['products'] as $index => $product)
         { // Boucle pour afficher produits par produits
+
+            var_dump($_SESSION["image"][$index]);
+
+            $filename = $_SESSION["image"][$index];
+            var_dump($filename);
             echo "<tr>",
                     "<td>".$index."</td>",
-                    "<td>".$product['name']."</td>",
+                    "<td class='survol'>".$product['name']."<div><img src='img/$filename' alt='image'></div></td>",
                     "<td>".number_format($product['price'], 2, ",", "&nbsp;")."&nbsp;€</td>",
                     "<td><a style='text-decoration:none' href='traitement.php?action=down-qtt&id=$index'><i class='ri-indeterminate-circle-line'></i></a>".$product['qtt']."<a style='text-decoration:none' href='traitement.php?action=up-qtt&id=$index'><i class='ri-add-circle-line'></i></a></td>",
                     "<td>".number_format($product['total'], 2, ",", "&nbsp;")."&nbsp;€</td>",
@@ -44,4 +48,6 @@
     }
     $content = ob_get_clean();
     require_once "template.php";
+
+    
 ?>
