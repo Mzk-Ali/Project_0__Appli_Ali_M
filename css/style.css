@@ -27,16 +27,16 @@ td.survol{
 }
 
 td:hover.survol {
-    /* text-decoration: none; */
+    text-decoration: none;
     background: none;
 }
 
-td.survol div {
+td.survol div.infos {
     display: none;
     background-color: rgba(204, 229, 255, 0.8);
 }
   
-td:hover.survol div {
+td:hover.survol div.infos {
     display: block;
     position: absolute; 
     top: 40px;
@@ -49,4 +49,22 @@ td:hover.survol div {
 
 img{
     max-width: 100%;
+}
+
+td.survol div.description{
+    background-color: blue;
+    display: none;
+}
+
+
+td div.click-description{
+    background-color: rgb(219, 253, 255);
+    border: solid;
+    position: absolute; 
+    top: -50px;
+    left: 10px;
+    z-index: 20;
+    width:400px;
+    height: auto;
+    padding:2px 4px;
 }
