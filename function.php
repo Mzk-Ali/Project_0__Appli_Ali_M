@@ -13,19 +13,22 @@
 
 
     function manag_msg($msg){
-        if($msg = "add")
+        if($msg == "add")
         {
             $_SESSION["msg_form"] = "Le produit a bien été ajouté";
-            //echo $_SESSION["msg_form"];die;
-            //echo "testfunction"; die;
         }
-
-        echo '<script>console.log("test")</script>';
-        echo '<script>
-            div_msg = document.getElementsByClassName("msg"),
-            div_msg.innerHTML = "salut"</script>';
-        
-        
+        else if($msg == "Nadd")
+        {
+            $_SESSION["msg_form"] = "Veuillez compléter complétement le formulaire avec l'image correspondant";
+        }
+        else if($msg == "delete_shop")
+        {
+            $_SESSION["msg_form"] = "Le produit a bien été supprimé ";
+        }
+        else if($msg == "clear_shop")
+        {
+            $_SESSION["msg_form"] = "Tous les produits du panier ont été supprimé ";
+        }
         
 
 

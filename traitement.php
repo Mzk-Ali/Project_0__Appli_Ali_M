@@ -1,5 +1,6 @@
 <?php
     session_start(); // Commence une nouvelle session
+    require("function.php");
     if(isset($_GET['action']))
     {
         switch($_GET['action'])
@@ -22,6 +23,7 @@
 
                     if($name && $price && $qtt && $name_img)
                     {
+                        
                         // Formulaire
                         $product = [
                             "name"          => $name,
@@ -43,36 +45,46 @@
                             $uniqueName = uniqid('', true);
                             $fileName = $uniqueName.'.'.$extension;
                             $_SESSION["image"][] = $fileName;
+                            //var_dump($_SESSION["image"]);die; 
                             move_uploaded_file($tmpName, './img/'.$fileName); // Permet d'enregistrer un fichier
                         }
                         else{
                             echo "Mauvaise extension ou taille importante ou erreur";
                         }
-                        //$message = "Le produit a bien été ajouté";
-                        require("function.php");
+                        // Le produit a bien été ajouté
                         manag_msg("add");
                         header("Location:index.php");
+                        break;
                     }
-                    
+                    // Le produit n'a pas été ajouté
+                    manag_msg("Nadd");
+                    header("Location:index.php");
                 }
-                //$message = "Le produit n'a pas été ajouté";
-                manag_msg("Nadd");
-                header("Location:index.php");
                 break;
 
             // Case delete 1 product
             case "delete":
                 if(isset($_GET['id']))
                 {
+                    unlink("img/".$_SESSION['image'][$_GET['id']]);
                     unset($_SESSION['products'][$_GET['id']]);
+                    unset($_SESSION['image'][$_GET['id']]);
                     $_SESSION['products'] = array_values($_SESSION['products']);
+                    $_SESSION['image'] = array_values($_SESSION['image']); 
                 }
+                manag_msg("delete_shop");
                 header("Location:recap.php");
                 break;
 
             // Case delete all products
             case "clear":
+                foreach($_SESSION["image"] as $cle)
+                {
+                    unlink("img/".$cle);
+                }
                 unset($_SESSION['products']);
+                unset($_SESSION['image']);
+                manag_msg("clear_shop");
                 header("Location:recap.php");
                 break;
 
