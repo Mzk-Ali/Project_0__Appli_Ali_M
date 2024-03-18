@@ -32,7 +32,7 @@
         <main>
 
             <?= $content ?>
-            <div class="msg">
+            <div id="msg">
                 <?php
                     $message = (isset($_SESSION["msg_form"])) ? $_SESSION["msg_form"] : null;
                     echo $message;

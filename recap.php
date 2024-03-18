@@ -28,7 +28,7 @@
             $filename = $_SESSION["image"][$index];
             echo "<tr class='info_product'>",
                     "<td>".$index."</td>",
-                    "<td class='survol'>".$product['name']."<div class='infos'><img src='img/".$filename."' alt='image'></div><div class='description'><span>Description du produit : ".$product['description']."</span></div></td>",
+                    "<td class='survol'>".$product['name']."<div class='infos'><img src='img/".$filename."' alt='image'></div><div class='description'><h2>Le produit sélectionné est une '".$product['name']."'</h2><span>Description du produit : <br>".$product['description']."</span><p>Le prix de ce produit est de ".$product['price']." €</p></div></td>",
                     "<td>".number_format($product['price'], 2, ",", "&nbsp;")."&nbsp;€</td>",
                     "<td><a style='text-decoration:none' href='traitement.php?action=down-qtt&id=$index'><i class='ri-indeterminate-circle-line'></i></a>".$product['qtt']."<a style='text-decoration:none' href='traitement.php?action=up-qtt&id=$index'><i class='ri-add-circle-line'></i></a></td>",
                     "<td>".number_format($product['total'], 2, ",", "&nbsp;")."&nbsp;€</td>",
